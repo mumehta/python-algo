@@ -12,8 +12,8 @@ This repository contains Python projects, scripts, and experiments. It is intend
 
 1. Clone the repository:
   ```bash
-  git clone https://github.com/your-username/python-4.git
-  cd python-4
+  git clone https://github.com/mumehta/python-algo.git
+
   ```
 2. (Optional) Create and activate a virtual environment:
   ```bash
