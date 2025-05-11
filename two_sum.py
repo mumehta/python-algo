@@ -1,20 +1,25 @@
-import random
+# import random
 
-random_numbers = [random.randint(0,9) for _ in range(7)]
+# random_numbers = [random.randint(0,9) for _ in range(7)]
 
-print(random_numbers)
+# print(random_numbers)
 
-output = []
+# random_numbers = sorted(random_numbers)
+# print(random_numbers)
 
-target = 11
+numbers = [0, 1, 3, 4, 7, 7, 9]
 
-for i in range(len(random_numbers)):
-  for j in range(i+1,len(random_numbers)):
-    if random_numbers[i] + random_numbers[j] == target:
-      print(f"Indices: {i}, {j} (Values: {random_numbers[i], random_numbers[j]})")
-      found = True
-      break
-  if found:
-    break
-if not found:
-  print("No two numbers add up to target")
+target = 7
+
+def two_sums(numbers, target):
+  seen = set()
+  result = set()
+
+  for num in numbers:
+    complement = target - num
+    if complement in seen:
+      result.add(tuple(sorted((num,complement))))
+    seen.add(num)
+  return [list(pair) for pair in result]
+
+print(two_sums(numbers, target))
