@@ -21,12 +21,17 @@ class Linked_List:
     self.tail.next = new_node
     self.tail = new_node
     self.length += 1
+    return True
 
   def prepend(self, value):
     new_node = Node(value)
-    new_node.next = self.head
+    if self.length == 0:
+      self.tail = new_node
+    else:
+      new_node.next = self.head
     self.head = new_node
     self.length += 1
+    return True
 
   def print_linked_list(self):
     temp = self.head
@@ -77,17 +82,70 @@ class Linked_List:
     self.length += 1
     return True
     
+  def pop_first(self):
+    if self.length == 0:
+      return None
+    else:
+      temp = self.head
+      if self.length == 1:
+        self.head = None
+        self.tail = None
+      else:
+        self.head = temp.next
+        temp.next = None
+      self.length -= 1
+      return temp
+
+  def get(self, index):
+    if index < 0 or index >= self.length:
+      return None
+    temp = self.head
+    for _ in range(index):
+      temp = temp.next
+    return temp
+
+  def set_value(self, index, value):
+    temp = self.get(index)
+    if temp:
+      temp.value = value
+      return True
+    return False
+
+  def remove(self, index):
+    if index < 0 or index >= self.length:
+      return None
+    else:
+      if index == 0:
+        return self.pop_first()
+      if index == self.length - 1:
+        return self.pop()
+      cur = self.get(index - 1)
+      temp = cur.next
+      cur.next = temp.next
+      temp.next = None
+      self.length -= 1
+      return temp
+
+  def reverse(self):
+    temp = self.head
+    self.head = self.tail
+    self.tail = temp
+    before = None
+    after = temp.next
+    for _ in range(self.length):
+      after = temp.next
+      temp.next = before
+      before = temp
+      temp = after
+
 my_linked_list = Linked_List(4)
 my_linked_list.append(22)
 my_linked_list.append(44)
 my_linked_list.prepend(0)
-# popped = my_linked_list.pop()
-# print(popped.value)
-# popped = my_linked_list.pop()
-# print(popped.value)
-# popped = my_linked_list.pop()
-# print(popped.value)
-# my_linked_list.print_linked_list()
 
-my_linked_list.insert(3, 33)
 my_linked_list.print_linked_list()
+
+print("== Reverse the link list === ")
+my_linked_list.reverse()
+my_linked_list.print_linked_list()
+print("=== done ===")
