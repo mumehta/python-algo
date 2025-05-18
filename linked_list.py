@@ -157,30 +157,28 @@ class Linked_List:
         return True
     return False
 
+  def get_kth_element_from_end(self, index_from_end):
+    slow = self.head
+    fast = self.head
+    if index_from_end <0 or index_from_end > self.length:
+      return None
+    for _ in range(index_from_end):
+      fast = fast.next
+    while fast and fast.next:
+      slow = slow.next
+      fast = fast.next
+    return slow
+
 my_linked_list = Linked_List(4)
 my_linked_list.append(22)
 my_linked_list.append(44)
 my_linked_list.prepend(0)
-my_linked_list.append(66)
-my_linked_list.append(88)
+
 my_linked_list.print_linked_list()
+node = my_linked_list.get_kth_element_from_end(0)
+print(f"node is: {node.value}")
 
-# my_linked_list.tail.next = my_linked_list.head
-
-# my_linked_list.print_linked_list()
-
-# print("== Reverse the link list === ")
-# my_linked_list.reverse()
-# my_linked_list.print_linked_list()
-# print("=== done ===")
-
-# print("== Get middle element ==")
-# middle = my_linked_list.get_middle_node()
-# print(f"Middle node value: {middle.value}")
-
-# print("== Reverse the link list === ")
-# my_linked_list.reverse()
-# my_linked_list.print_linked_list()
-# print("=== done ===")
-
-# print(my_linked_list.has_loop() ) # Returns False
+print("== Reverse the link list === ")
+my_linked_list.reverse()
+my_linked_list.print_linked_list()
+print("=== done ===")
