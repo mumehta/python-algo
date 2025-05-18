@@ -138,14 +138,49 @@ class Linked_List:
       before = temp
       temp = after
 
+      
+  def get_middle_node(self):
+    slow = self.head
+    fast = self.head
+    while fast and fast.next:
+      slow = slow.next
+      fast = fast.next.next
+    return slow
+
+  def has_loop(self):
+    slow = self.head
+    fast = self.head
+    while fast and fast.next:
+      slow = slow.next
+      fast = fast.next.next
+      if slow == fast:
+        return True
+    return False
+
 my_linked_list = Linked_List(4)
 my_linked_list.append(22)
 my_linked_list.append(44)
 my_linked_list.prepend(0)
-
+my_linked_list.append(66)
+my_linked_list.append(88)
 my_linked_list.print_linked_list()
 
-print("== Reverse the link list === ")
-my_linked_list.reverse()
-my_linked_list.print_linked_list()
-print("=== done ===")
+# my_linked_list.tail.next = my_linked_list.head
+
+# my_linked_list.print_linked_list()
+
+# print("== Reverse the link list === ")
+# my_linked_list.reverse()
+# my_linked_list.print_linked_list()
+# print("=== done ===")
+
+# print("== Get middle element ==")
+# middle = my_linked_list.get_middle_node()
+# print(f"Middle node value: {middle.value}")
+
+# print("== Reverse the link list === ")
+# my_linked_list.reverse()
+# my_linked_list.print_linked_list()
+# print("=== done ===")
+
+# print(my_linked_list.has_loop() ) # Returns False
