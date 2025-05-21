@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 class InvalidIndexError(Exception):
   def __init__(self, index, message="Invalid index provided."):
       self.index = index
@@ -33,11 +35,14 @@ class Linked_List:
     self.length += 1
     return True
 
-  def print_linked_list(self):
+  def print_linked_list(self, horizontal = False):
     temp = self.head
     if temp is not None:
       while temp.next is not None:
-        print(temp.value)
+        if not horizontal:
+          print(temp.value)
+        else:
+          print(temp.value, end=' ')
         temp = temp.next
       print(temp.value)
     else:
@@ -169,13 +174,79 @@ class Linked_List:
       fast = fast.next
     return slow
 
-my_linked_list = Linked_List(4)
-my_linked_list.append(22)
-my_linked_list.append(44)
-my_linked_list.prepend(0)
-my_linked_list.append(66)
-my_linked_list.append(88)
+  def remove_duplicate_from_sorted_list(self):
+    temp = self.head
+    pre = self.head
+    while temp and temp.next:
+      pre = temp
+      temp = temp.next
+      if temp.value == pre.value:
+        print(f"duplication found {temp.value}")
+        pre.next = temp.next
 
-my_linked_list.print_linked_list()
-node = my_linked_list.get_kth_element_from_end(0)
-print(f"node is: {node.value}")
+  def remove_duplicate(self):
+    temp = self.head
+    seen = set()
+    seen.add(temp.value)
+    while temp and temp.next:
+      if temp.next.value in seen:
+        temp.next = temp.next.next
+      else:
+        seen.add(temp.next.value)
+        temp = temp.next
+
+  def binary_to_decimal(self):
+    prev = 0
+    total = 0
+    temp = self.head
+    while temp:
+      total = (2 * prev) + temp.value
+      prev = total
+      temp = temp.next
+    return total
+  
+  def partition_linked_list(self, value):
+    before_list = Linked_List(0)
+    after_list = Linked_List(0)
+    before = before_list.head
+    after = after_list.head
+    current = self.head
+    while current:
+      next_node = current.next
+      current.next = None
+      if current.value < value:
+        before.next = current
+        before = before.next
+      else:
+        after.next = current
+        after = after.next
+      current = next_node
+
+    before.next = after_list.head.next
+    self.head = before_list.head.next
+    self.tail = after if after.next is None else self.tail
+
+linked_list = Linked_List(1)
+linked_list.append(3)
+linked_list.append(8)
+linked_list.append(5)
+linked_list.append(10)
+linked_list.append(2)
+linked_list.append(3)
+# my_linked_list.append(22)
+# my_linked_list.append(66)
+# my_linked_list.append(4)
+# my_linked_list.append(44)
+# my_linked_list.prepend(0)
+# my_linked_list.append(66)
+# my_linked_list.append(88)
+
+print("Original linked list ... ")
+linked_list.print_linked_list(horizontal=True)
+
+partition_at = 5
+linked_list.partition_linked_list(partition_at)
+
+print(f"Partitioned linked list at {partition_at} is:")
+linked_list.print_linked_list(horizontal=True)
+
