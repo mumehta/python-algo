@@ -221,10 +221,36 @@ class Linked_List:
         after.next = current
         after = after.next
       current = next_node
-
     before.next = after_list.head.next
     self.head = before_list.head.next
     self.tail = after if after.next is None else self.tail
+
+  def reverse_between(self, left, right):
+    if not self.head or left == right:
+        return
+
+    dummy = Node(0)
+    dummy.next = self.head
+    prev = dummy
+
+    # Step 1: Reach node at position (left - 1)
+    for _ in range(left - 1):
+        prev = prev.next
+
+    # Step 2: Reverse the sublist
+    reverse_start = prev.next
+    current = reverse_start.next
+
+    for _ in range(right - left):
+        temp = current.next
+        current.next = prev.next
+        prev.next = current
+        reverse_start.next = temp
+        current = temp
+
+    # Step 3: Update head if needed
+    self.head = dummy.next
+
 
 linked_list = Linked_List(1)
 linked_list.append(3)
@@ -244,9 +270,14 @@ linked_list.append(3)
 print("Original linked list ... ")
 linked_list.print_linked_list(horizontal=True)
 
-partition_at = 5
-linked_list.partition_linked_list(partition_at)
+# partition_at = 5
+# linked_list.partition_linked_list(partition_at)
 
-print(f"Partitioned linked list at {partition_at} is:")
+# print(f"Partitioned linked list at {partition_at} is:")
+# linked_list.print_linked_list(horizontal=True)
+
+left = 2
+right = 5
+print(f"reverse linked list between {left} and {right}")
+linked_list.reverse_between(left, right)
 linked_list.print_linked_list(horizontal=True)
-
