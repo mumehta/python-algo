@@ -1,0 +1,85 @@
+{
+  "workbench.colorTheme": "Default Dark Modern",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "ms-python.autopep8",
+  "explorer.confirmDelete": false,
+  "editor.minimap.enabled": false,
+
+  // ✅ Move these here
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": ["--indent-size=2"],
+
+  "[python]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "ms-vscode.js-debug"
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "pylint.args": [
+    "--rcfile=pylint.rc"
+  ],
+  "files.associations": {
+    "*.rc": "ini"
+  },
+  "python.analysis.diagnosticSeverityOverrides": {},
+  "python.experiments.optInto": [],
+  "pylint.cwd": "${fileDirname}",
+  "pylint.showNotifications": "always",
+  "remote.autoForwardPortsSource": "hybrid",
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "redhat.telemetry.enabled": true,
+  "files.autoSave": "afterDelay",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "javascript": true
+  },
+  "http.noProxy": [
+    "http://proxy.govconnect.nsw.gov.au:9090/proxy.pac"
+  ],
+  "autopep8.args": [
+    "--indent-size=2"
+  ],
+  "autopep8.importStrategy": "fromEnvironment"
+}
