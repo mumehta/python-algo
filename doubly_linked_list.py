@@ -141,20 +141,28 @@ class DoublyLinkedList:
       current.prev, current.next = current.next, current.prev
       current = current.next  # because next and prev have been swapped
 
+  def is_palindrome(self):
+    start = self.head
+    end = self.tail
+
+    for _ in range(self.length // 2):
+      if start.value != end.value:
+        return False
+      start = start.next
+      end = end.prev
+
+    return True
+
 
 dll = DoublyLinkedList(3)
 dll.pop()
-dll.prepend(-1)
-dll.append(2)
-dll.append(6)
 dll.prepend(0)
+dll.append(6)
+dll.append(3)
+dll.append(3)
+dll.append(6)
+dll.append(0)
+
 dll.print_doubly_linked_list()
-dll.insert(3, 88)
-dll.print_doubly_linked_list()
-get_index_3 = dll.get(3)
-print(f"value at index 3 is {get_index_3.value}")
-dll.remove(3)
-dll.print_doubly_linked_list()
-print("Reversing...")
-dll.reverse()
-dll.print_doubly_linked_list()
+is_dll_palindrom = dll.is_palindrome()
+print(f"Node list is palindrom: {is_dll_palindrom}")
