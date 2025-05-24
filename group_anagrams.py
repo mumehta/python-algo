@@ -13,8 +13,10 @@ Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
 
 from collections import defaultdict
 
+
 def sorted_string(input):
-    return ''.join(sorted(input))
+  return ''.join(sorted(input))
+
 
 strs = ["act", "pots", "tops", "cat", "stop", "hat"]
 
@@ -22,10 +24,9 @@ strs = ["act", "pots", "tops", "cat", "stop", "hat"]
 anagram_groups = defaultdict(list)
 
 for s in strs:
-    key = sorted_string(s)
-    anagram_groups[key].append(s)
+  key = sorted_string(s)
+  anagram_groups[key].append(s)
 
 # Get the grouped lists
 output = list(anagram_groups.values())
 print(output)
-

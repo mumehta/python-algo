@@ -17,15 +17,18 @@ Explanation: "tabacat" is not a palindrome.
 
 import re
 
+
 def remove_non_alphanumeric(s):
-    return re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+  return re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+
 
 def palindrome_test(s):
-    s_len = len(s)
-    for i in range(s_len//2):
-        if s[i] != s[s_len-1-i]:
-            return False
-    return True
+  s_len = len(s)
+  for i in range(s_len // 2):
+    if s[i] != s[s_len - 1 - i]:
+      return False
+  return True
+
 
 s = "Was it a car or a cat I saw?"
 is_valid_palindrome = palindrome_test(remove_non_alphanumeric(s))

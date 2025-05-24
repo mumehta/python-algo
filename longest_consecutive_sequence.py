@@ -16,21 +16,22 @@ Output: 7
 '''
 from collections import defaultdict
 
+
 def get_longest_sequence(nums):
-    num_set = set(nums)
-    longest = 0
-    for n in num_set:
-        # Only start counting if n is the beginning of a sequence
-        if n - 1 not in num_set:
-            current = n
-            length = 1
-            while current + 1 in num_set:
-                current += 1
-                length += 1
-            longest = max(longest, length)
-    return longest
+  num_set = set(nums)
+  longest = 0
+  for n in num_set:
+    # Only start counting if n is the beginning of a sequence
+    if n - 1 not in num_set:
+      current = n
+      length = 1
+      while current + 1 in num_set:
+        current += 1
+        length += 1
+      longest = max(longest, length)
+  return longest
 
 
-nums = [3,20,4,10,2,4,5]
+nums = [3, 20, 4, 10, 2, 4, 5]
 longest_sequence = get_longest_sequence(nums)
 print(f"The longest sequence is {longest_sequence}")

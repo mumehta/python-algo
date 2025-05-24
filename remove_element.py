@@ -21,7 +21,7 @@ for (int i = 0; i < actualLength; i++) {
 }
 If all assertions pass, then your solution will be accepted.
 
- 
+
 
 Example 1:
 
@@ -44,15 +44,17 @@ Constraints:
 0 <= val <= 100
 '''
 
-def removeElements(nums, val):
-    k = 0
-    for i in range(len(nums)):
-        if nums[i] != val:
-            nums[k] = nums[i]
-            k += 1
-    return k
 
-nums = [0,1,2,2,3,0,4,2]
+def removeElements(nums, val):
+  k = 0
+  for i in range(len(nums)):
+    if nums[i] != val:
+      nums[k] = nums[i]
+      k += 1
+  return k
+
+
+nums = [0, 1, 2, 2, 3, 0, 4, 2]
 val = 2
 k = removeElements(nums, val)
 print(f'k: {k}, expectedNums: {nums[:k]}')

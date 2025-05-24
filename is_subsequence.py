@@ -15,12 +15,12 @@ i = 0  # pointer for s
 j = 0  # pointer for t
 
 while i < len(s) and j < len(t):
-    if s[i] == t[j]:
-        i += 1  # move s pointer only when characters match
-    j += 1  # always move t pointer
+  if s[i] == t[j]:
+    i += 1  # move s pointer only when characters match
+  j += 1  # always move t pointer
 
 # If we matched all characters in s, then it's a subsequence
 if i == len(s):
-    print(True)
+  print(True)
 else:
-    print(False)
+  print(False)

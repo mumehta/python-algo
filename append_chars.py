@@ -20,8 +20,8 @@ j = 0
 
 while i < len(sing) and j < len(ting):
   if ting[j] == sing[i]:
-    j = j+1
-  i = i+1
+    j = j + 1
+  i = i + 1
 
 if i == len(sing) and j < len(ting):
   count = len(ting) - j

@@ -36,11 +36,11 @@ print(output)'''
 
 
 from collections import Counter
-
 def most_frequent_k(nums, k):
-    freq_map = Counter(nums)
-    most_common = freq_map.most_common(k)
-    return [num for num, count in most_common]
+  freq_map = Counter(nums)
+  most_common = freq_map.most_common(k)
+  return [num for num, count in most_common]
 
-nums = [7,7,7,8,8,9]
+
+nums = [7, 7, 7, 8, 8, 9]
 print(most_frequent_k(nums, 2))

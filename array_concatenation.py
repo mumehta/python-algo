@@ -5,7 +5,7 @@ Specifically, ans is the concatenation of two nums arrays.
 
 Return the array ans.
 
- 
+
 
 Example 1:
 
@@ -17,15 +17,15 @@ Explanation: The array ans is formed as follows:
 '''
 
 import random
-nums = [random.randint(0,9) for _ in range(3)]
+nums = [random.randint(0, 9) for _ in range(3)]
 
 print(nums)
 ans = []
 
-for i in range(2*len(nums)):
-  if i<len(nums):
+for i in range(2 * len(nums)):
+  if i < len(nums):
     ans.append(nums[i])
   else:
-    ans.append(nums[i-len(nums)])
+    ans.append(nums[i - len(nums)])
 
 print(ans)

@@ -20,23 +20,29 @@ To quickly get started with this repository using Visual Studio Code and Dev Con
 This approach provides a consistent, isolated development environment with all dependencies pre-installed.
 
 1. Clone the repository:
-  ```bash
-  git clone https://github.com/mumehta/python-algo.git
 
-  ```
+```bash
+git clone https://github.com/mumehta/python-algo.git
+
+```
+
 2. (Optional) Create and activate a virtual environment:
-  ```bash
-  python3 -m venv venv
-  source venv/bin/activate
-  ```
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
 3. Install dependencies (if any):
-  ```bash
-  pip install -r requirements.txt
-  ```
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
 Run any script using:
+
 ```bash
 python script_name.py
 ```

@@ -14,7 +14,7 @@ Output: 2
 Explanation: The passengers at indices 0, 1, and 2 have ages 75, 92, and 40. Thus, there are 2 people who are over 60 years old.
 '''
 
-passengers =  ["7868190130M7522","5303914400F9211","9273338290F4010"]
+passengers = ["7868190130M7522", "5303914400F9211", "9273338290F4010"]
 
 senior_citizen_age = 60
 senior_citizen = 0
@@ -25,6 +25,6 @@ for passenger in passengers:
   seat = passenger[13:]
   print(f"phone: {phone}, sex: {sex}, age: {age} and seat: {seat}")
   if int(age) > senior_citizen_age:
-    senior_citizen +=1
+    senior_citizen += 1
 
 print(f"Senior citizens are: {senior_citizen}")

@@ -11,6 +11,7 @@ numbers = [0, 1, 3, 4, 7, 7, 9]
 
 target = 7
 
+
 def two_sums(numbers, target):
   seen = set()
   result = set()
@@ -18,8 +19,9 @@ def two_sums(numbers, target):
   for num in numbers:
     complement = target - num
     if complement in seen:
-      result.add(tuple(sorted((num,complement))))
+      result.add(tuple(sorted((num, complement))))
     seen.add(num)
   return [list(pair) for pair in result]
+
 
 print(two_sums(numbers, target))

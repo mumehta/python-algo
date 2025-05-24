@@ -11,14 +11,13 @@ The element 1 occurs at the indices 0 and 3.
 
 import random
 
-nums = [random.randint(0,9) for _ in range(0,4)]
+nums = [random.randint(0, 9) for _ in range(0, 4)]
 print(nums)
 
 duplicate = False
 for i in range(len(nums)):
-  for j in range(i+1, len(nums)):
+  for j in range(i + 1, len(nums)):
     if nums[j] == nums[i]:
       duplicate = True
 
 print(duplicate)
-    

@@ -5,7 +5,7 @@ After doing so, return the array.
 Example 1:
   Input: arr = [17,18,5,4,6,1]
   Output: [18,6,6,6,1,-1]
-  Explanation: 
+  Explanation:
   - index 0 --> the greatest element to the right of index 0 is index 1 (18).
   - index 1 --> the greatest element to the right of index 1 is index 4 (6).
   - index 2 --> the greatest element to the right of index 2 is index 4 (6).
@@ -14,19 +14,20 @@ Example 1:
   - index 5 --> there are no elements to the right of index 5, so we put -1.
 '''
 
+
 def replaceElements(arr):
-    n = len(arr)
-    max_so_far = -1
+  n = len(arr)
+  max_so_far = -1
 
-    # Traverse from right to left
-    for i in range(n - 1, -1, -1):
-        current = arr[i]
-        arr[i] = max_so_far
-        max_so_far = max(max_so_far, current)
+  # Traverse from right to left
+  for i in range(n - 1, -1, -1):
+    current = arr[i]
+    arr[i] = max_so_far
+    max_so_far = max(max_so_far, current)
 
-    return arr
+  return arr
+
 
 # Example
-arr = [17,18,5,4,6,1]
+arr = [17, 18, 5, 4, 6, 1]
 print(replaceElements(arr))
-  

@@ -9,7 +9,7 @@ Output: "fl"
 
 '''
 
-strs1 = ["flower","flow","flight"]
+strs1 = ["flower", "flow", "flight"]
 strs = ["cluster", "clue", "clutch", "club", "clumsy"]
 
 strs = sorted(strs)

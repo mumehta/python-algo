@@ -43,23 +43,24 @@ numbers = [0, 1, 3, 4, 7, 7, 9]
 
 target = 12
 
+
 def three_sum(numbers, target):
   numbers = sorted(numbers)
   result = set()
   for i in range(len(numbers) - 2):
-    left = i+1
+    left = i + 1
     right = len(numbers) - 1
 
     while left < right:
       sum = numbers[i] + numbers[left] + numbers[right]
       if (sum == target):
         result.add(tuple([numbers[i], numbers[left], numbers[right]]))
-        left = left +1
-        right = right -1
+        left = left + 1
+        right = right - 1
       elif sum < target:
-        left = left +1
+        left = left + 1
       else:
-        right = right -1
+        right = right - 1
   return list(result)
 
 
