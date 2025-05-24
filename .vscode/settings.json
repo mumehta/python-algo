@@ -69,11 +69,12 @@
   "redhat.telemetry.enabled": true,
   "files.autoSave": "afterDelay",
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
     "markdown": false,
     "scminput": false,
-    "javascript": true
+    "javascript": true,
+    "python": false
   },
   "http.noProxy": [
     "http://proxy.govconnect.nsw.gov.au:9090/proxy.pac"
