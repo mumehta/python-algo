@@ -1,4 +1,5 @@
 from any_random import get_tool, get_count
+from collections import defaultdict
 
 
 class HashTable:
@@ -47,6 +48,29 @@ class HashTable:
           tool_list.append(key)
     return tool_list
 
+  def item_in_common(self, list1, list2):
+    my_dict = {}
+    my_dict = {item: True for item in list1}
+    for item in list2:
+      return True if item in my_dict else False
+    return False
+
+  def find_duplicates(self, list1):
+    hash_map = {}
+    dup_lst = []
+
+    for item in list1:
+      h = self.__hash(item)
+      if h not in hash_map:
+        hash_map[h] = [item]
+      else:
+        hash_map[h].append(item)
+
+    for values in hash_map.values():
+      if len(values) > 1:
+        dup_lst.extend(values)
+    return dup_lst
+
 
 warehouse = HashTable()
 tools = []
@@ -70,3 +94,8 @@ all_warehouse_tools = warehouse.keys()
 print(f"All tools we have ...")
 for _, tool in enumerate(all_warehouse_tools):
   print(tool, end=' ')
+
+list1 = [2, 3, 4, 5]
+list2 = [6, 7, 8]
+print("list1 and list2 has anything in common?")
+print(warehouse.item_in_common(list1, list2))
