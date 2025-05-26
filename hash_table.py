@@ -1,72 +1,69 @@
-from any_random import get_tool, get_count
+class Node:
+  def __init__(self, value):
+    self.value = value
+    self.next = None
 
 
 class HashTable:
   def __init__(self, size=7):
     self.data_map = [None] * size
 
-  def __str__(self):
-    return "\n".join(f"{i}: {slot}" for i, slot in enumerate(self.data_map))
-
-  def __hash(self, key):
+  def __hash(self, animal):
     my_hash = 0
-    for letter in key:
-      my_hash = (my_hash + ord(letter)*23) % len(self.data_map)
+    for char in animal:
+      my_hash = (my_hash + ord(char) * 23) % len(self.data_map)
     return my_hash
 
-  def print_table(self):
-    for i, val in enumerate(self.data_map):
-      if val:
-        for k, v in val:
-          print(f"{i}: {k} -> {v}")
-      else:
-        print(f"{i}: None")
-
-  def set_item(self, key, value):
-    index = self.__hash(key)
-    if self.data_map[index] is None:
-      self.data_map[index] = []
-    self.data_map[index].append([key, value])
-
-  def get_item(self, key):
-    index = self.__hash(key)
+  def set_item(self, value):
+    index = self.__hash(value)
+    new_node = Node(value)
     if self.data_map[index] is not None:
-      for i in range(len(self.data_map[index])):
-        if self.data_map[index][i][0] == key:
-          return self.data_map[index][i][1]
-    return None
+      cur_node = self.data_map[index]
+      while cur_node.next:
+        cur_node = cur_node.next
+      cur_node.next = new_node
+    else:
+      self.data_map[index] = new_node
 
-  def has_key(self, key):
-    return self.get_item(key) is not None
+  def print_table(self):
+    for index, node in enumerate(self.data_map):
+      if node:
+        chain = []
+        while node:
+          chain.append(node.value)
+          node = node.next
+        print(f"{index}: {' -> '.join(chain)}")
+      else:
+        print(f"{index}: None")
 
-  def keys(self):
-    tool_list = []
-    for index, slot in enumerate(self.data_map):
-      if slot is not None:
-        for key, _ in slot:
-          tool_list.append(key)
-    return tool_list
+  def has_item(self, value):
+    index = self.__hash(value)
+    temp = self.data_map[index]
+    while temp:
+      if value == temp.value:
+        return True
+      temp = temp.next
+    return False
+
+  def get_items(self):
+    items = []
+
+    for node in self.data_map:
+      while node:
+        items.append(node.value)
+        node = node.next
+
+    if items:
+      print(*items)
+    else:
+      print("Hash table is empty. Nothing to print")
 
 
-warehouse = HashTable()
-tools = []
-
-# add one tool at a time in hash table
-for i in range(10):
-  tool = get_tool()
-  if tool not in tools:
-    tools.append(tool)
-    warehouse.set_item(tool, get_count())
-warehouse.print_table()
-
-tool = get_tool()
-qty = warehouse.get_item(tool)
-if qty is not None:
-  print(f"In warehouse, we search for {tool} and have {qty} items.")
-else:
-  print(f"{tool} not found in warehouse.")
-
-all_warehouse_tools = warehouse.keys()
-print(f"All tools we have ...")
-for _, tool in enumerate(all_warehouse_tools):
-  print(tool, end=' ')
+table = HashTable()
+table.set_item("dog")
+table.set_item("cat")
+table.set_item("mouse")
+table.print_table()
+print(f"Table has dog: {table.has_item('dog')}")
+print(f"Table has elephant: {table.has_item('elephant')}")
+table.get_items()
